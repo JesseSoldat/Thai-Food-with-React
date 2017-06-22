@@ -3,36 +3,57 @@ import {connect} from 'react-redux';
 import {fetchDishes} from '../actions';
 import map from 'lodash/map';
 import keys from 'lodash/keys';
+import {Link} from 'react-router-dom';
 
 class Dishes extends Component {
 	componentWillMount() {
 		this.props.fetchDishes();
 	}
-	renderDishes() {
+	renderCategories() {
 		const {dishes} = this.props;
 		// console.log(dishes);
 		return map(dishes, (dish) => {
 
 			let dishNames = keys(dish);
-			dishNames = map(dishNames, (name) => {
-				return name.replace(/_/g, ' ');
-			});
 
 			return map(dishNames, (dishName, i) => {
-				return <li key={i}>{dishName}</li>
-			})
+				let url = dishName;
+				return <li key={i}><Link to={`/dishes/${url}`}>{dishName.replace(/_/g, ' ')}</Link></li>
+			});
 		});
+	}
+
+	renderDishes() {
+		const {dishes} = this.props;
+		let {id} = this.props.match.params;
+
+		return map(dishes, (type) => {	
+			let dishesList = type[id];
+			
+			return map(dishesList, (dish, i) => {
+		
+				return <li key={i}>{dish.thai_name}</li>
+			});
+		});		
 	}
 
 	render() {
 		
 		return(
 			<div className="container">
-				<h3>Thai Dishes</h3>
-				<ul>
-					{this.renderDishes()}
-				</ul>
-
+			
+				<div className="col-sm-3">
+					<h3>Categories</h3>
+					<ul>
+						{this.renderCategories()}
+					</ul>
+				</div>
+				<div className="col-sm-8 col-sm-offset-1">
+					<h3>Dishes List</h3>
+					<ul>
+						{this.renderDishes()}
+					</ul>
+				</div>
 			</div>
 		)
 	}

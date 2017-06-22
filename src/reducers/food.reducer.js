@@ -16,7 +16,7 @@ export default function(state = initialState, action) {
 				if (s <= 5) return null;
 				dishGT5[i] = dish;
 			});
-			console.log(dishGT5);
+			// console.log(dishGT5);
 			return { ...state, ...dishGT5};
 		default: 
 			return state;

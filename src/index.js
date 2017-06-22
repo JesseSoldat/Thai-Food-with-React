@@ -7,9 +7,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reducers from './reducers';
 
 import NavBar from './components/navbar';
+import Dashboard from './components/dashboard';
 import Dishes from './components/dishes';
+import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -19,7 +20,9 @@ ReactDOM.render(
 		<div>
 			<NavBar/>
 			<Switch>
-				<Route path="/" component={Dishes}/>
+				<Route path="/dashboard" component={Dashboard} />
+				<Route path="/dishes/:id" component={Dishes}/>
+				<Route path="/" component={Dashboard} />
 			</Switch>
 		</div>
 	</BrowserRouter>
