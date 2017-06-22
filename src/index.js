@@ -23,7 +23,7 @@ ReactDOM.render(
 			<Switch>
 				<Route path="/dashboard" component={Dashboard} />
 				<Route path="/dishes/:id" component={Dishes}/>
-				<Route path="/dish/:id" component={Dish} />
+				<Route path="/dish/:cat/:id" component={Dish} />
 				<Route path="/" component={Dashboard} />
 			</Switch>
 		</div>

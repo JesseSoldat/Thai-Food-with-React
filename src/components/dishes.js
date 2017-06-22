@@ -31,8 +31,8 @@ class Dishes extends Component {
 
 	renderDishes() {
 		const {dishes} = this.props;
-		console.log(dishes)
-		let {id} = this.props.match.params;
+		let { id} = this.props.match.params;
+		// console.log(this.props.match.params)
 
 		return map(dishes, (type) => {	
 			let dishesList = type[id];
@@ -41,7 +41,7 @@ class Dishes extends Component {
 		
 				return (
 				<li key={i} className="list-group-item">
-					<Link to={`/dish/${dish.thai_name}`}>
+					<Link to={`/dish/${id}/${dish.thai_name}`}>
 						<span id="dishThaiName">{dish.thai_name}</span> 
 						<span>{dish.thai_script}</span>
 					</Link>
