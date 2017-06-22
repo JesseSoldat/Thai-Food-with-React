@@ -8,3 +8,8 @@ li {
   line-height: 2em;
   text-align: left;
 }
+
+/*Dishes List*/
+#dishThaiName {
+  margin-right: 15px;
+}

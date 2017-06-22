@@ -18,13 +18,20 @@ class Dishes extends Component {
 
 			return map(dishNames, (dishName, i) => {
 				let url = dishName;
-				return <li key={i}><Link to={`/dishes/${url}`}>{dishName.replace(/_/g, ' ')}</Link></li>
+				return (
+				<li key={i} className="list-group-item">
+					<Link to={`/dishes/${url}`}>
+						{dishName.replace(/_/g, ' ')}
+					</Link>
+				</li>
+				);
 			});
 		});
 	}
 
 	renderDishes() {
 		const {dishes} = this.props;
+		console.log(dishes)
 		let {id} = this.props.match.params;
 
 		return map(dishes, (type) => {	
@@ -32,7 +39,14 @@ class Dishes extends Component {
 			
 			return map(dishesList, (dish, i) => {
 		
-				return <li key={i}>{dish.thai_name}</li>
+				return (
+				<li key={i} className="list-group-item">
+					<Link to={`/dish/${dish.thai_name}`}>
+						<span id="dishThaiName">{dish.thai_name}</span> 
+						<span>{dish.thai_script}</span>
+					</Link>
+				</li>
+				);
 			});
 		});		
 	}
@@ -44,13 +58,13 @@ class Dishes extends Component {
 			
 				<div className="col-sm-3">
 					<h3>Categories</h3>
-					<ul>
+					<ul className="list-group">
 						{this.renderCategories()}
 					</ul>
 				</div>
 				<div className="col-sm-8 col-sm-offset-1">
 					<h3>Dishes List</h3>
-					<ul>
+					<ul className="list-group">
 						{this.renderDishes()}
 					</ul>
 				</div>

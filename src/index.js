@@ -9,6 +9,7 @@ import reducers from './reducers';
 import NavBar from './components/navbar';
 import Dashboard from './components/dashboard';
 import Dishes from './components/dishes';
+import Dish from './components/dish';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -22,6 +23,7 @@ ReactDOM.render(
 			<Switch>
 				<Route path="/dashboard" component={Dashboard} />
 				<Route path="/dishes/:id" component={Dishes}/>
+				<Route path="/dish/:id" component={Dish} />
 				<Route path="/" component={Dashboard} />
 			</Switch>
 		</div>
