@@ -3,10 +3,6 @@ import {connect} from 'react-redux';
 import {fetchDishes} from '../actions';
 import map from 'lodash/map';
 import keys from 'lodash/keys';
-import filter from 'lodash/filter';
-import size from 'lodash/size';
-import pick from 'lodash/pick';
-import identity from 'lodash/identity';
 
 class Dishes extends Component {
 	componentWillMount() {
@@ -29,8 +25,9 @@ class Dishes extends Component {
 	}
 
 	render() {
+		
 		return(
-			<div>
+			<div className="container">
 				<h3>Thai Dishes</h3>
 				<ul>
 					{this.renderDishes()}
